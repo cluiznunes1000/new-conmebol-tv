@@ -15,3 +15,101 @@ body { font-family: 'Inter', sans-serif; background-color: #f4f5f7; color: #333;
   display: inline-block; background: #d4af37; color: #0a192f; padding: 15px 30px; 
   text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 20px; 
 }
+
+/* ==========================================================================
+   MÁQUINA DE LEITURA FLUIDA (PADRÃO GE.GLOBO / RESPONSIVO)
+   ========================================================================= */
+.conteudo-portal {
+  width: 100%;
+  max-width: 680px;      /* Largura de ouro do GE: evita cansaço visual no PC */
+  margin: 40px auto;     /* Centraliza o bloco na tela e dá respiro vertical */
+  padding: 30px 24px;    /* Respiro interno das margens */
+  background: #ffffff;   /* Fundo branco sólido para destacar a leitura */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Tipografia jornalística */
+}
+
+/* Títulos das Seções (Mapeados pelo n8n) */
+.conteudo-portal h2 {
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #111111;
+  margin-top: 44px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+/* Subtítulos Internos */
+.conteudo-portal h3 {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #222222;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+/* Parágrafos - Réplica Exata das Dimensões do ge.globo */
+.conteudo-portal p {
+  font-size: 19px;       /* Fonte grande e escaneável */
+  line-height: 1.65;     /* Espaçamento perfeito entre linhas para não embaralhar */
+  color: #333333;        /* Preto suave / Grafite escuro */
+  margin-bottom: 26px;   /* Distância confortável entre blocos de ideias */
+  word-break: break-word;
+}
+
+/* Frases de Destaque com o Verde Oficial do ge.globo (Quebra o Muro de Texto) */
+.conteudo-portal strong {
+  color: #06aa48;        /* Verde vibrante de esporte */
+  font-weight: 700;
+}
+
+/* Listas e Rankings Escaneáveis (O Toque que Faltava do Padrão GE) */
+.conteudo-portal ul, 
+.conteudo-portal ol {
+  margin-left: 28px;
+  margin-bottom: 26px;
+}
+
+.conteudo-portal li {
+  font-size: 19px;
+  line-height: 1.65;
+  color: #333333;
+  margin-bottom: 12px;   /* Respiro generoso entre um item e outro da lista */
+}
+
+/* Imagens Dinâmicas Injetadas pelo n8n */
+.conteudo-portal img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 36px 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Quebra para Dispositivos Diferentes (Responsividade Celular) */
+@media (max-width: 768px) {
+  .conteudo-portal {
+    margin: 20px auto;
+    padding: 20px 16px;  /* Reduz margem interna para dar mais espaço na tela */
+    border-radius: 0;     /* Ocupa as bordas suavemente no celular */
+    box-shadow: none;
+  }
+  .conteudo-portal h2 {
+    font-size: 25px;     /* Letras ligeiramente menores em telas mobile */
+  }
+  .conteudo-portal h3 {
+    font-size: 20px;
+  }
+  .conteudo-portal p,
+  .conteudo-portal li {
+    font-size: 18px;     /* Ajuste fino de leitura para celular */
+    line-height: 1.6;
+  }
+  .conteudo-portal li {
+    margin-bottom: 10px;
+  }
+}

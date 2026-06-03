@@ -3,7 +3,7 @@
 /**
  * 1. Componentes de Estrutura
  */
- function renderHeader() {
+function renderHeader() {
   const header = document.querySelector('#header');
   header.innerHTML = `
     <nav class="nav-silos">
@@ -53,7 +53,7 @@ async function navigate(page) {
   if (page === 'home') {
     const stats = await fetchGameData(); // Busca o dado do widget
     renderWidget(stats);                 // 1. Renderiza o Widget
-    await renderNews();                  // 2. Busca e renderiza a Notícia Automatizada do n8n
+    await renderNews();                  // 2. Busca e renderiza a Notícia Automatizada do n8n (Padrão GE)
     renderCTA();                         // 3. Renderiza a Chamada para o Grupo VIP
   }
 }
@@ -72,28 +72,29 @@ function renderWidget(stats) {
 
 /**
  * 4. Motor de Notícias Automatizadas (Integração n8n -> GitHub)
+ * Ajustado para herdar a formatação responsiva e tipografia do ge.globo
  */
 async function renderNews() {
   const app = document.querySelector('#app');
   
-  // Procura a div que você colou no index.html. Se ela tiver sido sobrescrita, recriamos aqui.
+  // Seleciona ou cria o container da notícia aplicando a classe do novo design
   let containerNoticia = document.querySelector('#noticia-destaque');
   if (!containerNoticia) {
-    containerNoticia = document.createElement('div');
+    containerNoticia = document.createElement('article');
     containerNoticia.id = 'noticia-destaque';
-    containerNoticia.style = 'padding: 20px; background: #f9f9f9; margin-top: 20px; border-radius: 8px;';
+    containerNoticia.className = 'conteudo-portal'; // Vincula diretamente ao novo CSS limpo
     app.appendChild(containerNoticia);
   }
 
-  containerNoticia.innerHTML = '<p>Carregando as últimas análises da rodada...</p>';
+  containerNoticia.innerHTML = '<p style="text-align: center; font-size: 16px; color: #666;">Carregando as últimas análises da rodada...</p>';
 
-  // Calcula a data de hoje no formato YYYY-MM-DD
+  // Calcula a data de hoje dinamicamente (Mantém o sincronismo com o robô)
   const hoje = new Date();
   const dataFormatada = hoje.getFullYear() + '-' + 
                         String(hoje.getMonth() + 1).padStart(2, '0') + '-' + 
                         String(hoje.getDate()).padStart(2, '0');
 
-  // Monta a URL exata do arquivo gerado pelo robô
+  // URL do arquivo gerado pelo n8n
   const urlNoticia = `/posts/${dataFormatada}-rodada-libertadores.html`;
 
   try {
@@ -102,10 +103,10 @@ async function renderNews() {
       throw new Error('A matéria de hoje ainda não foi gerada.');
     }
     const htmlConteudo = await response.text();
-    containerNoticia.innerHTML = htmlConteudo; // Injeta o texto do Gemini na tela
+    containerNoticia.innerHTML = htmlConteudo; // Injeta o HTML cru com títulos, parágrafos e fotos
   } catch (error) {
     console.log("Status da automação:", error.message);
-    containerNoticia.innerHTML = '<p>Fique ligado! A análise tática da rodada de hoje sai em breve.</p>';
+    containerNoticia.innerHTML = '<p style="text-align: center; font-size: 16px; color: #666;">Fique ligado! A análise tática da rodada de hoje sai em breve.</p>';
   }
 }
 
