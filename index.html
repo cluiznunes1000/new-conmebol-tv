@@ -1,33 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Básico -->
-    <title>Conmebol TV | Inteligência, Palpites e Futebol Sul-Americano Ao Vivo</title>
-    <meta name="description" content="Portal especializado em dados estatísticos, transmissões e análises de futebol sul-americano. A fonte definitiva para o investidor esportivo." />
-    
-    <!-- Link para o CSS -->
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body>
-    
-    <!-- Estrutura Principal -->
-    <header id="header"></header>
-    
-    <main id="app">
-      <!-- O conteúdo será injetado aqui pelo main.js -->
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <footer id="footer"></footer>
+  <!-- SEO -->
+  <title>Conmebol TV | Libertadores, Sul-Americana e Futebol Sul-Americano Ao Vivo</title>
+  <meta name="description" content="Portal especializado em dados estatísticos, análises táticas e resultados do futebol sul-americano. Libertadores, Sul-Americana, Brasileirão e Seleções." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://conmeboltv.com.br/" />
 
-    <!-- Script principal de injeção de conteúdo (Apenas uma vez, no final) -->
-    <script type="module" src="/src/main.js"></script>
-    <!-- Local onde a notícia automatizada será injetada -->
-<div id="noticia-destaque" style="padding: 20px; background: #f9f9f9; margin-top: 20px; border-radius: 8px;">
-  <p>Carregando as últimas análises da rodada...</p>
-</div>
-  
-  </body>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conmebol TV | Inteligência Esportiva Sul-Americana" />
+  <meta property="og:description" content="Dados, palpites e análises de futebol sul-americano em tempo real." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://conmeboltv.com.br/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+  <!-- ===================================================
+       1. HEADER / NAV
+  ==================================================== -->
+  <header class="site-header" role="banner">
+    <nav class="nav-main" aria-label="Navegação principal">
+      <a href="/" class="nav-logo" aria-label="Conmebol TV - Home">
+        CONMEBOL<span>TV</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <ul class="nav-links" role="list">
+        <li><a href="#" onclick="window.navigate('home'); return false;">Home</a></li>
+        <li><a href="#" onclick="window.navigate('libertadores'); return false;">Libertadores</a></li>
+        <li><a href="#" onclick="window.navigate('sulamericana'); return false;">Sul-Americana</a></li>
+        <li><a href="#" onclick="window.navigate('brasileirao'); return false;">Brasileirão</a></li>
+        <li><a href="#" onclick="window.navigate('apostas'); return false;" class="nav-link-apostas">Apostas</a></li>
+      </ul>
+
+      <!-- Hamburger (mobile) -->
+      <button class="nav-hamburger" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="nav-mobile-drawer" id="mobileMenu" role="navigation" aria-label="Menu mobile" hidden>
+      <ul role="list">
+        <li><a href="#" onclick="closeMenu(); window.navigate('home'); return false;">🏠 Home</a></li>
+        <li><a href="#" onclick="closeMenu(); window.navigate('libertadores'); return false;">🏆 Libertadores</a></li>
+        <li><a href="#" onclick="closeMenu(); window.navigate('sulamericana'); return false;">⚽ Sul-Americana</a></li>
+        <li><a href="#" onclick="closeMenu(); window.navigate('brasileirao'); return false;">🇧🇷 Brasileirão</a></li>
+        <li><a href="#" onclick="closeMenu(); window.navigate('apostas'); return false;" class="nav-link-apostas">📊 Apostas</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===================================================
+       2. TICKER SLIM — Alerta ao Vivo
+  ==================================================== -->
+  <div class="ticker-wrap" role="complementary" aria-label="Dados ao vivo">
+    <div class="ticker-label">AO VIVO</div>
+    <div class="ticker-track" id="tickerTrack">
+      <span>🔥 Live Odds: <strong>Palmeiras vs Peñarol</strong> — Prob. vitória casa: <strong>72%</strong></span>
+      <span>⚡ Flamengo vs River Plate — Prob. vitória casa: <strong>61%</strong></span>
+      <span>📊 Atlético-MG vs Boca Juniors — Empate: <strong>28%</strong></span>
+      <span>🏆 Semifinal da Libertadores já tem data confirmada</span>
+      <span>🔥 Live Odds: <strong>Palmeiras vs Peñarol</strong> — Prob. vitória casa: <strong>72%</strong></span>
+      <span>⚡ Flamengo vs River Plate — Prob. vitória casa: <strong>61%</strong></span>
+      <span>📊 Atlético-MG vs Boca Juniors — Empate: <strong>28%</strong></span>
+    </div>
+  </div>
+
+  <!-- ===================================================
+       3. BANNER VIP — Super Leaderboard Estreito
+  ==================================================== -->
+  <aside class="banner-vip" role="complementary" aria-label="Grupo VIP">
+    <p class="banner-vip__text">
+      Quer lucrar com estes dados? <span>Junte-se a +8.200 especialistas no <strong>Aposta Invest 2.0</strong></span>
+    </p>
+    <a href="https://facebook.com/groups/sua-comunidade" target="_blank" rel="noopener" class="btn-vip">
+      ENTRAR NO GRUPO VIP
+    </a>
+  </aside>
+
+  <!-- ===================================================
+       4. MAIN — Conteúdo da página (injetado por JS)
+  ==================================================== -->
+  <main id="app" role="main">
+    <!-- Renderizado por /src/main.js -->
+  </main>
+
+  <footer id="footer" class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-logo">CONMEBOL<span>TV</span></p>
+      <p class="footer-copy">© 2026 ConmebolTV.com.br — Todos os direitos reservados.</p>
+      <nav aria-label="Links do rodapé">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+
+  <script>
+    // Hamburger menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      drawer.hidden = open;
+      toggle.classList.toggle('is-open', !open);
+    });
+    function closeMenu() {
+      toggle.setAttribute('aria-expanded', 'false');
+      drawer.hidden = true;
+      toggle.classList.remove('is-open');
+    }
+  </script>
+</body>
 </html>
