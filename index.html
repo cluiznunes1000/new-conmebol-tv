@@ -22,15 +22,11 @@
         <li><a href="#">Brasileirão</a></li>
         <li><a href="#" class="nav-link-apostas">Apostas</a></li>
       </ul>
-      <button class="nav-hamburger" id="menuToggle">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-hamburger" id="menuToggle"><span></span><span></span><span></span></button>
     </nav>
   </header>
 
-  <div class="ad-container ad-topo">
-      <div joinadscode="Content1"></div>
-  </div>
+  <div class="ad-container ad-topo"><div joinadscode="Content1"></div></div>
 
   <div class="live-score-grid">
       <div class="score-card"><strong>FLA</strong> 2 x 0 <strong>RIV</strong></div>
@@ -39,20 +35,52 @@
       <div class="score-card"><strong>OPE</strong> 1 x 0 <strong>JUV</strong></div>
   </div>
 
-  <main id="app" class="container content-wrapper">
+  <main class="container">
     
-    <section class="hero-reduced">
-        <!-- Correção: Estilo de fundo separado de forma segura -->
-        <article class="hero-main-small" style="background-image: url('https://images.unsplash.com/photo-1518605368461-1e1e38ce81ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+    <section class="hero-grid">
+        <article class="hero-main" style="background-image: url('https://images.unsplash.com/photo-1518605368461-1e1e38ce81ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
             <div class="hero-main__overlay"></div>
-            <div class="overlay-text">
-                <span class="tag">Libertadores</span>
-                <h1>Cruzeiro avança na competição com atuação de gala de Gerson no meio-campo</h1>
-                <p>Confira a análise tática de como a nova contratação celeste dominou as ações na partida decisiva.</p>
+            <div class="hero-main__body">
+                <span class="hero-main__tag">Libertadores</span>
+                <h1 class="hero-main__title">Cruzeiro avança na competição com atuação de gala de Gerson no meio-campo</h1>
+                <p class="hero-main__excerpt">Confira a análise tática de como a nova contratação celeste dominou as ações na partida decisiva.</p>
             </div>
         </article>
         
-        <aside class="sidebar-desktop">
+        <aside class="hero-secondary">
+            <div class="ad-container ad-quadrado"><div joinadscode="Content2" lazyload="true"></div></div>
+
+            <article class="news-card-sm">
+                <div class="news-card-sm__img" style="background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80');"></div>
+                <div class="news-card-sm__body">
+                    <h2 class="news-card-sm__title">Bastidores: Os reflexos no elenco após a demissão do técnico Filipe Luís</h2>
+                </div>
+            </article>
+
+            <article class="news-card-sm">
+                <div class="news-card-sm__img" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbb452718e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80');"></div>
+                <div class="news-card-sm__body">
+                    <h2 class="news-card-sm__title">Classificação atualizada: Quem já garantiu vaga nas oitavas de final?</h2>
+                </div>
+            </article>
+        </aside>
+    </section>
+
+    <div class="content-split">
+        <section class="news-silo">
+            <h2 class="section-title">Últimas Notícias</h2>
+            
+            <article class="silo-item">
+                <div class="silo-img" style="background-image: url('https://images.unsplash.com/photo-1551280857-2b9ebf240c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="silo-text">
+                    <span class="tag-small">Análise Tática</span>
+                    <h3>Como o esquema com 3 zagueiros mudou a dinâmica do campeonato</h3>
+                    <p>Especialistas destrincham a formação que tem dominado os gramados sul-americanos nesta temporada.</p>
+                </div>
+            </article>
+        </section>
+
+        <aside class="sidebar">
             <div class="widget standings">
                 <h3>🏆 Top 5 - Brasileirão</h3>
                 <ul>
@@ -61,69 +89,21 @@
                     <li>3. Botafogo - 40 pts</li>
                 </ul>
             </div>
-            
-            <!-- GAVETA 1: O JS VAI COLOCAR OS ODDS AQUI -->
-            <div id="odds-placeholder"></div>
-
-            <div class="ad-container ad-quadrado"><div joinadscode="Content2" lazyload="true"></div></div>
-        </aside>
-    </section>
-
-    <div class="content-split">
-        <section class="news-silo">
-            <h2 class="section-title">Últimas Notícias</h2>
-            
-            <!-- GAVETA 2: O JS VAI COLOCAR A NOTÍCIA DO n8n AQUI -->
-            <div id="n8n-placeholder"></div>
-            
-            <article class="silo-item">
-                <div class="silo-img" style="background-image: url('https://images.unsplash.com/photo-1551280857-2b9ebf240c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'); background-size: cover; background-position: center;"></div>
-                <div class="silo-text">
-                    <span class="tag-small">Análise Tática</span>
-                    <h3>Como o esquema com 3 zagueiros mudou a dinâmica do campeonato</h3>
-                    <p>Especialistas destrincham a formação que tem dominado os gramados sul-americanos nesta temporada.</p>
-                </div>
-            </article>
-
-            <article class="silo-item">
-                <div class="silo-img" style="background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'); background-size: cover; background-position: center;"></div>
-                <div class="silo-text">
-                    <span class="tag-small">Bastidores</span>
-                    <h3>Os reflexos no elenco após a demissão do técnico Filipe Luís em fevereiro</h3>
-                </div>
-            </article>
-        </section>
-
-        <aside class="sidebar">
-            <div style="background-color: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 5px solid #dd3333; margin: 0 0 20px 0;">
-                <p style="text-align: center; margin: 0; font-size: 15px;">
-                    <a href="https://conmeboltv.com.br" style="font-weight: bold; color: #dd3333; text-decoration: none;">Conmebol TV</a>: 
-                    O <strong>futebol</strong> sul-americano todos os dias na palma da sua mão. 
-                </p>
-            </div>
             <div class="ad-container ad-quadrado"><div joinadscode="Content3" lazyload="true"></div></div>
         </aside>
     </div>
 
-    <!-- GAVETA 3: O JS VAI COLOCAR O CTA VIP AQUI -->
-    <div id="cta-placeholder"></div>
+    <section class="cta-section">
+      <h2>Quer lucrar com estes dados?</h2>
+      <p>Junte-se a +8.200 especialistas no Aposta Invest 2.0 e receba nossas análises diárias.</p>
+      <a href="https://facebook.com/groups/sua-comunidade" target="_blank" class="btn-cta-large">ENTRAR NO GRUPO VIP</a>
+    </section>
 
     <div class="clever-core-ads-offerwall"></div>
   </main>
 
-  <footer id="footer" class="site-footer">
+  <footer class="site-footer">
     <div class="footer-ad-rotator"></div>
-    <div class="footer-grid container">
-        <div class="footer-col">
-            <h4>Políticas</h4>
-            <a href="#">Privacidade</a>
-            <a href="#">Termos de Uso</a>
-        </div>
-        <div class="footer-col">
-            <h4>Perguntas Frequentes Rápida</h4>
-            <p><strong>Como funciona o critério de desempate?</strong> O saldo de gols e o confronto direto são os primeiros fatores avaliados pela confederação no chaveamento.</p>
-        </div>
-    </div>
     <div class="footer-bottom">
         <p class="footer-logo">CONMEBOL<span>TV</span></p>
     </div>
@@ -131,4 +111,4 @@
 
   <script type="module" src="/src/main.js"></script>
 </body>
-</html> 
+</html>
