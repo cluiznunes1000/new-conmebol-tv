@@ -395,3 +395,35 @@
      .overlay-text h1 { font-size: 42px; }
      .hero-main { min-height: 460px; }
    }
+   /* ==========================================================================
+   CLASSES RECUPERADAS PARA O JAVASCRIPT (ODDS, CTA, n8n)
+   ========================================================================= */
+
+/* Widget de Odds na Sidebar */
+.widget-odds-box {
+  background: var(--c-navy);
+  color: white;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.section-label-small { font-family: var(--font-display); color: var(--c-gold); text-transform: uppercase; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.05em;}
+.card-odds__match { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+.card-odds__prob { font-size: 14px; margin-bottom: 16px; color: #ddd;}
+.card-odds__prob strong { color: var(--c-gold); font-size: 18px; }
+.btn-vip-small { display: inline-block; background: var(--c-gold); color: var(--c-navy); padding: 8px 16px; border-radius: 4px; font-family: var(--font-display); font-weight: bold; text-transform: uppercase; font-size: 13px; }
+
+/* CTA VIP no rodapé do conteúdo */
+.cta-section {
+  background: #fff;
+  border: 2px solid var(--c-gold);
+  border-radius: var(--radius-md);
+  padding: 32px 20px;
+  text-align: center;
+  margin: 40px 0;
+}
+.cta-section h2 { font-family: var(--font-display); color: var(--c-navy); font-size: 28px; margin-bottom: 12px; text-transform: uppercase; }
+.cta-section p { color: var(--c-muted); margin-bottom: 20px; font-size: 16px; }
+.btn-cta-large { display: inline-block; background: var(--c-navy); color: var(--c-gold); padding: 14px 32px; border-radius: var(--radius-sm); font-family: var(--font-display); font-weight: bold; font-size: 16px; text-transform: uppercase; }

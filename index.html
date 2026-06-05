@@ -3,87 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Conmebol TV | Libertadores, Sul-Americana e Futebol Sul-Americano Ao Vivo</title>
-  <meta name="description" content="Portal especializado em dados estatísticos, análises táticas e resultados do futebol sul-americano. Libertadores, Sul-Americana, Brasileirão e Seleções." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://conmeboltv.com.br/" />
-
-  <meta property="og:title" content="Conmebol TV | Inteligência Esportiva Sul-Americana" />
-  <meta property="og:description" content="Dados, palpites e análises de futebol sul-americano em tempo real." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://conmeboltv.com.br/" />
-
-  <!-- Pre-fetch para o GTM e Ads -->
+  <title>Conmebol TV | Inteligência Esportiva</title>
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Certifique-se de que o caminho do CSS corresponde à sua pasta no StackBlitz -->
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
 
-  <!-- ===================================================
-       1. HEADER / NAV
-  ==================================================== -->
-  <header class="site-header" role="banner">
-    <nav class="nav-main" aria-label="Navegação principal">
-      <a href="/" class="nav-logo" aria-label="Conmebol TV - Home">
-        CONMEBOL<span>TV</span>
-      </a>
-
-      <ul class="nav-links" role="list">
-        <li><a href="#" onclick="window.navigate('home'); return false;">Home</a></li>
-        <li><a href="#" onclick="window.navigate('libertadores'); return false;">Libertadores</a></li>
-        <li><a href="#" onclick="window.navigate('sulamericana'); return false;">Sul-Americana</a></li>
-        <li><a href="#" onclick="window.navigate('brasileirao'); return false;">Brasileirão</a></li>
-        <li><a href="#" onclick="window.navigate('apostas'); return false;" class="nav-link-apostas">Apostas</a></li>
+  <header class="site-header">
+    <nav class="nav-main">
+      <a href="/" class="nav-logo">CONMEBOL<span>TV</span></a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Libertadores</a></li>
+        <li><a href="#">Sul-Americana</a></li>
+        <li><a href="#">Brasileirão</a></li>
+        <li><a href="#" class="nav-link-apostas">Apostas</a></li>
       </ul>
-
-      <button class="nav-hamburger" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+      <button class="nav-hamburger" id="menuToggle">
         <span></span><span></span><span></span>
       </button>
     </nav>
-
-    <div class="nav-mobile-drawer" id="mobileMenu" role="navigation" aria-label="Menu mobile" hidden>
-      <ul role="list">
-        <li><a href="#" onclick="closeMenu(); window.navigate('home'); return false;">🏠 Home</a></li>
-        <li><a href="#" onclick="closeMenu(); window.navigate('libertadores'); return false;">🏆 Libertadores</a></li>
-        <li><a href="#" onclick="closeMenu(); window.navigate('sulamericana'); return false;">⚽ Sul-Americana</a></li>
-        <li><a href="#" onclick="closeMenu(); window.navigate('brasileirao'); return false;">🇧🇷 Brasileirão</a></li>
-        <li><a href="#" onclick="closeMenu(); window.navigate('apostas'); return false;" class="nav-link-apostas">📊 Apostas</a></li>
-      </ul>
-    </div>
   </header>
 
-  <!-- ===================================================
-       2. VERTICE ADS (TOPO)
-  ==================================================== -->
   <div class="ad-container ad-topo">
       <div joinadscode="Content1"></div>
   </div>
 
-  <!-- ===================================================
-       3. PLACARES LIVE SCORE (Estilo GE)
-  ==================================================== -->
-  <div class="live-score-grid" role="complementary" aria-label="Placares ao vivo">
+  <div class="live-score-grid">
       <div class="score-card"><strong>FLA</strong> 2 x 0 <strong>RIV</strong></div>
       <div class="score-card"><strong>CRU</strong> 1 x 0 <strong>BOC</strong></div>
       <div class="score-card"><strong>PAL</strong> 3 x 1 <strong>PEN</strong></div>
       <div class="score-card"><strong>OPE</strong> 1 x 0 <strong>JUV</strong></div>
   </div>
 
-  <!-- ===================================================
-       4. CONTEÚDO PRINCIPAL (MAIN)
-  ==================================================== -->
-  <main id="app" role="main" class="container content-wrapper">
+  <main id="app" class="container content-wrapper">
     
-    <!-- Hero Reduced (Destaque Principal de 50%) -->
     <section class="hero-reduced">
-        <article class="hero-main-small" style="background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1518605368461-1e1e38ce81ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;">
+        <!-- Correção: Estilo de fundo separado de forma segura -->
+        <article class="hero-main-small" style="background-image: url('https://images.unsplash.com/photo-1518605368461-1e1e38ce81ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+            <div class="hero-main__overlay"></div>
             <div class="overlay-text">
                 <span class="tag">Libertadores</span>
                 <h1>Cruzeiro avança na competição com atuação de gala de Gerson no meio-campo</h1>
@@ -100,18 +61,23 @@
                     <li>3. Botafogo - 40 pts</li>
                 </ul>
             </div>
-            <!-- Join Ads Content 2 (Lazy Load) -->
+            
+            <!-- GAVETA 1: O JS VAI COLOCAR OS ODDS AQUI -->
+            <div id="odds-placeholder"></div>
+
             <div class="ad-container ad-quadrado"><div joinadscode="Content2" lazyload="true"></div></div>
         </aside>
     </section>
 
-    <!-- Silo de Notícias e Barra Lateral Esquerda -->
     <div class="content-split">
         <section class="news-silo">
             <h2 class="section-title">Últimas Notícias</h2>
             
+            <!-- GAVETA 2: O JS VAI COLOCAR A NOTÍCIA DO n8n AQUI -->
+            <div id="n8n-placeholder"></div>
+            
             <article class="silo-item">
-                <div class="silo-img" style="background: url('https://images.unsplash.com/photo-1551280857-2b9ebf240c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;"></div>
+                <div class="silo-img" style="background-image: url('https://images.unsplash.com/photo-1551280857-2b9ebf240c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'); background-size: cover; background-position: center;"></div>
                 <div class="silo-text">
                     <span class="tag-small">Análise Tática</span>
                     <h3>Como o esquema com 3 zagueiros mudou a dinâmica do campeonato</h3>
@@ -119,94 +85,50 @@
                 </div>
             </article>
 
-            <!-- Artigos recuperados do layout anterior -->
             <article class="silo-item">
-                <div class="silo-img" style="background: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;"></div>
+                <div class="silo-img" style="background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'); background-size: cover; background-position: center;"></div>
                 <div class="silo-text">
                     <span class="tag-small">Bastidores</span>
                     <h3>Os reflexos no elenco após a demissão do técnico Filipe Luís em fevereiro</h3>
                 </div>
             </article>
-
-            <article class="silo-item">
-                <div class="silo-img" style="background: url('https://images.unsplash.com/photo-1508344928928-7137b29de218?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;"></div>
-                <div class="silo-text">
-                    <span class="tag-small">Polêmica</span>
-                    <h3>Arbitragem sob pressão: Conmebol divulga áudios oficiais do VAR</h3>
-                </div>
-            </article>
         </section>
 
         <aside class="sidebar">
-            <!-- Anúncio Nativo Conmebol / Aposta Invest -->
             <div style="background-color: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 5px solid #dd3333; margin: 0 0 20px 0;">
                 <p style="text-align: center; margin: 0; font-size: 15px;">
                     <a href="https://conmeboltv.com.br" style="font-weight: bold; color: #dd3333; text-decoration: none;">Conmebol TV</a>: 
                     O <strong>futebol</strong> sul-americano todos os dias na palma da sua mão. 
-                    <br><br>
-                    <a href="https://conmeboltv.com.br/noticias/" style="color: #333; font-weight: 500;">Confira as últimas notícias do esporte mais amado do planeta.</a>
                 </p>
             </div>
-
-            <!-- Join Ads Content 3 (Lazy Load) -->
             <div class="ad-container ad-quadrado"><div joinadscode="Content3" lazyload="true"></div></div>
         </aside>
     </div>
 
-    <!-- Container da Offerwall (Ativado via JS apenas em páginas permitidas) -->
-    <div class="clever-core-ads-offerwall"></div>
+    <!-- GAVETA 3: O JS VAI COLOCAR O CTA VIP AQUI -->
+    <div id="cta-placeholder"></div>
 
+    <div class="clever-core-ads-offerwall"></div>
   </main>
 
-  <!-- ===================================================
-       5. FOOTER ESTRATÉGICO
-  ==================================================== -->
-  <footer id="footer" class="site-footer" role="contentinfo">
-    <!-- Bloco de Rodízio de Anúncios no Rodapé (Controlado pelo main.js) -->
+  <footer id="footer" class="site-footer">
     <div class="footer-ad-rotator"></div>
-
     <div class="footer-grid container">
-        <div class="footer-col">
-            <h4>Mapa do Site</h4>
-            <a href="#">Início</a>
-            <a href="#">Resultados Ao Vivo</a>
-            <a href="#">Prognósticos</a>
-        </div>
         <div class="footer-col">
             <h4>Políticas</h4>
             <a href="#">Privacidade</a>
             <a href="#">Termos de Uso</a>
-            <a href="#">Contato</a>
         </div>
         <div class="footer-col">
             <h4>Perguntas Frequentes Rápida</h4>
-            <p><strong>Como funciona o critério de desempate na fase de grupos?</strong> O saldo de gols e o confronto direto são os primeiros fatores avaliados pela confederação no chaveamento.</p>
-            <p><strong>O que é handicap asiático nas cotações esportivas?</strong> Trata-se de uma linha virtual de gols aplicada antes do evento iniciar para equilibrar as probabilidades e garantir previsões seguras.</p>
+            <p><strong>Como funciona o critério de desempate?</strong> O saldo de gols e o confronto direto são os primeiros fatores avaliados pela confederação no chaveamento.</p>
         </div>
     </div>
     <div class="footer-bottom">
         <p class="footer-logo">CONMEBOL<span>TV</span></p>
-        <p class="footer-copy">© 2026 ConmebolTV.com.br — Todos os direitos reservados.</p>
     </div>
   </footer>
 
   <script type="module" src="/src/main.js"></script>
-
-  <script>
-    // Hamburger menu toggle
-    const toggle = document.getElementById('menuToggle');
-    const drawer = document.getElementById('mobileMenu');
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      drawer.hidden = open;
-      toggle.classList.toggle('is-open', !open);
-    });
-    function closeMenu() {
-      toggle.setAttribute('aria-expanded', 'false');
-      drawer.hidden = true;
-      toggle.classList.remove('is-open');
-    }
-  </script>
 </body>
-</html>
+</html> 
