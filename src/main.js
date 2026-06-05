@@ -135,4 +135,24 @@ function renderFooterAd() {
     // 30% das vezes exibe a captura de lead para o grupo VIP
     footerAd.innerHTML = `
       <div class="cta-vip-box" style="padding: 20px; text-align: center; background-color: var(--c-navy-md); border-radius: 8px; max-width: 600px; margin: 0 auto;">
-        <p style="font-size
+        <p style="font-size: 18px; color: white; margin-bottom: 12px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0.05em;">Quer lucrar com estes dados?</p>
+        <a href="https://facebook.com/groups/sua-comunidade" target="_blank" class="btn-vip" style="text-decoration: none;">ENTRAR NO GRUPO VIP</a>
+      </div>
+    `;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INICIALIZAÇÃO
+// ─────────────────────────────────────────────────────────────────────────────
+function init() {
+  navigate('home');
+  
+  // Renderiza o anúncio rotativo no rodapé
+  renderFooterAd();
+
+  // Dispara o carregamento dos scripts pesados de ads após 3 segundos
+  setTimeout(dispararCarregamentoAds, 3000);
+}
+
+init();
