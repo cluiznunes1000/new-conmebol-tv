@@ -250,10 +250,7 @@ function init() {
   navigate('home');
 }
 
-init();
-}
-
-/**
+init(); /**
  * 2. Motor de Dados (Busca o JSON)
  */
 async function fetchGameData() {
