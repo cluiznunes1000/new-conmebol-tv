@@ -1,11 +1,397 @@
-body { background-color: #f4f5f7 !important; font-family: sans-serif !important; margin: 0; }
-.site-header { background-color: #0a192f !important; padding: 15px !important; color: white !important; }
-.nav-logo { font-size: 20px; font-weight: bold; color: white; text-decoration: none; }
-.nav-logo span { color: #d4af37; }
-.hero-reduced { display: grid !important; grid-template-columns: 2fr 1fr !important; gap: 20px !important; padding: 20px !important; max-width: 1200px; margin: 0 auto; }
-.hero-main-small { min-height: 250px; display: flex; align-items: flex-end; padding: 20px; border-radius: 8px; color: white; }
-.overlay-text { background: rgba(0,0,0,0.6); padding: 10px; }
-.widget { background: white !important; padding: 15px !important; border-radius: 8px !important; border: 1px solid #ddd; }
-.live-score-grid { display: flex !important; gap: 10px !important; padding: 15px !important; background: white !important; max-width: 1200px; margin: 10px auto; }
-.score-card { border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
-.ad-container { text-align: center !important; margin: 20px 0 !important; }
+/* ==========================================================================
+   CONMEBOLTV.COM.BR — Design System (Atualizado e Otimizado)
+   Fontes: Barlow Condensed (títulos) + Barlow (corpo)
+   Paleta: Azul-escuro #0a192f | Dourado #d4af37 | Branco #fff | Cinza claro #f4f5f7
+   ========================================================================= */
+
+/* --------------------------------------------------------------------------
+   RESET + TOKENS
+   -------------------------------------------------------------------------- */
+   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+   :root {
+     --c-navy:    #0a192f;
+     --c-navy-md: #112240;
+     --c-gold:    #d4af37;
+     --c-gold-lt: #f0d060;
+     --c-white:   #ffffff;
+     --c-off:     #f4f5f7;
+     --c-border:  #e2e4e9;
+     --c-text:    #1a1a2e;
+     --c-muted:   #5a6070;
+     --c-red:     #e03131;
+     --c-green:   #2f9e44;
+   
+     --font-display: 'Barlow Condensed', sans-serif;
+     --font-body:    'Barlow', sans-serif;
+   
+     --radius-sm: 4px;
+     --radius-md: 8px;
+     --radius-lg: 12px;
+   
+     --header-h: 56px;
+     --ticker-h: 34px;
+     --banner-h: 80px;
+   }
+   
+   html { scroll-behavior: smooth; }
+   body {
+     font-family: var(--font-body);
+     background: var(--c-off);
+     color: var(--c-text);
+     font-size: 16px;
+     line-height: 1.5;
+     -webkit-font-smoothing: antialiased;
+   }
+   img { display: block; width: 100%; height: auto; }
+   a { text-decoration: none; color: inherit; }
+   ul { list-style: none; }
+   
+   /* --------------------------------------------------------------------------
+      1. HEADER / NAV  — máx 60px desktop, mobile compacto
+      -------------------------------------------------------------------------- */
+   .site-header {
+     position: sticky;
+     top: 0;
+     z-index: 200;
+     background: var(--c-navy);
+     border-bottom: 2px solid var(--c-gold);
+   }
+   
+   .nav-main {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     height: var(--header-h);       
+     padding: 0 16px;
+     max-width: 1240px;
+     margin: 0 auto;
+   }
+   
+   .nav-logo {
+     font-family: var(--font-display);
+     font-size: 22px;
+     font-weight: 800;
+     letter-spacing: 0.04em;
+     color: var(--c-white);
+     text-transform: uppercase;
+     white-space: nowrap;
+   }
+   .nav-logo span { color: var(--c-gold); }
+   
+   .nav-links {
+     display: none;   
+     gap: 4px;
+   }
+   .nav-links li a {
+     display: block;
+     padding: 6px 12px;
+     font-family: var(--font-display);
+     font-size: 15px;
+     font-weight: 600;
+     letter-spacing: 0.05em;
+     color: rgba(255,255,255,0.85);
+     border-radius: var(--radius-sm);
+     transition: color .15s, background .15s;
+     text-transform: uppercase;
+   }
+   .nav-links li a:hover { color: var(--c-gold); background: rgba(255,255,255,0.07); }
+   .nav-links .nav-link-apostas { color: var(--c-gold) !important; }
+   .nav-links .nav-link-apostas:hover { background: rgba(212,175,55,0.12) !important; }
+   
+   .nav-hamburger {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap: 5px;
+     background: none;
+     border: none;
+     cursor: pointer;
+     padding: 8px;
+     width: 40px;
+     height: 40px;
+   }
+   .nav-hamburger span {
+     display: block;
+     width: 22px;
+     height: 2px;
+     background: var(--c-white);
+     border-radius: 2px;
+     transition: transform .25s, opacity .25s;
+     transform-origin: center;
+   }
+   .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+   .nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+   .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+   
+   .nav-mobile-drawer {
+     background: var(--c-navy-md);
+     border-top: 1px solid rgba(255,255,255,0.08);
+   }
+   .nav-mobile-drawer ul { display: flex; flex-direction: column; }
+   .nav-mobile-drawer li a {
+     display: block;
+     padding: 14px 20px;
+     font-family: var(--font-display);
+     font-size: 18px;
+     font-weight: 600;
+     letter-spacing: 0.04em;
+     color: rgba(255,255,255,0.9);
+     border-bottom: 1px solid rgba(255,255,255,0.06);
+     text-transform: uppercase;
+   }
+   .nav-mobile-drawer .nav-link-apostas { color: var(--c-gold) !important; }
+   
+   /* --------------------------------------------------------------------------
+      2. PLACARES LIVE SCORE & TICKER
+      -------------------------------------------------------------------------- */
+   .live-score-grid {
+     display: flex;
+     gap: 12px;
+     overflow-x: auto;
+     padding: 12px 16px;
+     background: var(--c-white);
+     border-bottom: 1px solid var(--c-border);
+     scrollbar-width: none; 
+   }
+   .live-score-grid::-webkit-scrollbar { display: none; }
+   
+   .score-card {
+     border: 1px solid var(--c-border);
+     padding: 8px 16px;
+     min-width: max-content;
+     border-radius: var(--radius-md);
+     font-family: var(--font-body);
+     font-size: 14px;
+     background: #fafafa;
+     color: var(--c-text);
+     white-space: nowrap;
+   }
+   .score-card strong { color: var(--c-navy); font-weight: 700; }
+   
+   /* Fallback do Ticker (Caso ativado) */
+   .ticker-wrap { display: flex; align-items: center; height: var(--ticker-h); background: #eef0f4; border-bottom: 1px solid var(--c-border); overflow: hidden; position: relative; }
+   .ticker-label { position: relative; z-index: 10; flex-shrink: 0; background: var(--c-red); color: var(--c-white); font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; padding: 0 10px; height: 100%; display: flex; align-items: center; text-transform: uppercase; white-space: nowrap; box-shadow: 3px 0 5px rgba(0,0,0,0.1); }
+   .ticker-track { display: flex; gap: 60px; white-space: nowrap; font-size: 13px; color: var(--c-text); animation: tickerScroll 28s linear infinite; padding-left: 24px; }
+   .ticker-track strong { color: var(--c-navy); font-weight: 600; }
+   @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+   
+   /* --------------------------------------------------------------------------
+      3. BLOCOS DE ANÚNCIOS (JoinAds, Vertice, Clever)
+      -------------------------------------------------------------------------- */
+   .ad-container {
+     text-align: center;
+     margin: 24px auto;
+     padding: 10px;
+     min-height: 90px; /* Previne Layout Shift (CWV) */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     max-width: 100%;
+     overflow: hidden;
+   }
+   
+   .clever-core-ads-offerwall {
+     /* Mantido no fluxo para não quebrar o layout antes do script injetar a modal */
+     display: block;
+   }
+   
+   .footer-ad-rotator {
+     text-align: center;
+     margin-bottom: 20px;
+     padding: 15px;
+   }
+   
+   /* --------------------------------------------------------------------------
+      4. BANNER VIP (CTA)
+      -------------------------------------------------------------------------- */
+   .banner-vip {
+     background: var(--c-navy);
+     display: flex;
+     flex-direction: column; /* Mobile first stack */
+     align-items: center;
+     justify-content: center;
+     padding: 24px 16px;
+     min-height: var(--banner-h);
+   }
+   
+   .banner-vip__text {
+     color: rgba(255,255,255,0.82);
+     font-size: 15px;
+     line-height: 1.5;
+     text-align: center;
+     margin-bottom: 16px; /* Respiro abaixo da frase no celular */
+   }
+   .banner-vip__text span { display: block; margin-top: 4px; }
+   .banner-vip__text strong { color: var(--c-gold); font-weight: 600; }
+   
+   .btn-vip {
+     flex-shrink: 0;
+     display: inline-block;
+     background: var(--c-gold);
+     color: var(--c-navy);
+     font-family: var(--font-display);
+     font-size: 14px;
+     font-weight: 800;
+     letter-spacing: 0.08em;
+     padding: 12px 24px;
+     border-radius: var(--radius-sm);
+     text-transform: uppercase;
+     white-space: nowrap;
+     transition: background .15s, transform .1s;
+   }
+   .btn-vip:hover { background: var(--c-gold-lt); transform: translateY(-1px); }
+   
+   /* --------------------------------------------------------------------------
+      5. HERO SECTION & CONTEÚDO
+      -------------------------------------------------------------------------- */
+   .container {
+     max-width: 1240px;
+     margin: 0 auto;
+     padding: 24px 16px;
+   }
+   
+   /* Novo Layout Destaque Reduzido */
+   .hero-reduced {
+     display: grid;
+     gap: 24px;
+     grid-template-columns: 1fr;
+     margin-bottom: 32px;
+   }
+   
+   .hero-main-small {
+     position: relative;
+     border-radius: var(--radius-lg);
+     overflow: hidden;
+     min-height: 280px;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     padding: 24px;
+   }
+   
+   .overlay-text {
+     position: relative;
+     z-index: 2;
+   }
+   .overlay-text h1 {
+     font-family: var(--font-display);
+     font-size: 28px;
+     font-weight: 800;
+     color: var(--c-white);
+     line-height: 1.15;
+     margin-bottom: 8px;
+     text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+   }
+   .overlay-text p {
+     color: rgba(255,255,255,0.9);
+     font-size: 15px;
+     text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+   }
+   
+   .tag {
+     background-color: var(--c-gold);
+     color: var(--c-navy);
+     font-family: var(--font-display);
+     font-weight: 700;
+     padding: 4px 8px;
+     font-size: 12px;
+     border-radius: var(--radius-sm);
+     text-transform: uppercase;
+     margin-bottom: 12px;
+     display: inline-block;
+   }
+   
+   /* Layout Clássico Hero (Fallback) */
+   .hero-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-bottom: 40px; }
+   .hero-main { position: relative; border-radius: var(--radius-lg); overflow: hidden; min-height: 300px; display: flex; align-items: flex-end; padding: 20px; }
+   .hero-secondary { display: flex; flex-direction: column; gap: 16px; }
+   .side-news { display: flex; gap: 16px; align-items: center; }
+   .side-news .thumb { width: 100px; height: 80px; border-radius: var(--radius-md); flex-shrink: 0; }
+   .side-news h2 { font-family: var(--font-display); font-size: 17px; line-height: 1.2; color: var(--c-text); }
+   
+   /* --------------------------------------------------------------------------
+      6. SILOS DE NOTÍCIAS E SIDEBAR
+      -------------------------------------------------------------------------- */
+   .content-split {
+     display: grid;
+     gap: 32px;
+     grid-template-columns: 1fr; 
+   }
+   
+   .section-title {
+     font-family: var(--font-display);
+     font-size: 24px;
+     color: var(--c-navy);
+     border-bottom: 2px solid var(--c-gold);
+     padding-bottom: 8px;
+     margin-bottom: 24px;
+     display: inline-block;
+   }
+   
+   .silo-item { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; border-bottom: 1px solid var(--c-border); padding-bottom: 32px; }
+   .silo-img { width: 100%; height: 200px; border-radius: var(--radius-md); flex-shrink: 0; }
+   .tag-small { color: var(--c-green); font-family: var(--font-display); font-weight: 700; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+   .silo-text h3 { font-family: var(--font-display); font-size: 22px; line-height: 1.2; margin-bottom: 8px; color: var(--c-text); }
+   .silo-text p { font-size: 15px; color: var(--c-muted); line-height: 1.5; }
+   
+   /* Sidebar (Classificação e Native Ads) */
+   .widget { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--radius-md); padding: 24px; margin-bottom: 20px;}
+   .widget h3 { font-family: var(--font-display); font-size: 20px; color: var(--c-navy); margin-bottom: 16px; }
+   .standings ul { display: flex; flex-direction: column; gap: 12px; }
+   .standings li { font-size: 15px; font-weight: 600; padding-bottom: 12px; border-bottom: 1px solid var(--c-off); }
+   .standings li:last-child { border-bottom: none; padding-bottom: 0; }
+   
+   /* --------------------------------------------------------------------------
+      7. FOOTER ESTRATÉGICO
+      -------------------------------------------------------------------------- */
+   .site-footer { background: #05101f; color: rgba(255,255,255,0.7); padding: 48px 16px 24px; margin-top: 40px; }
+   .footer-grid { display: grid; gap: 32px; grid-template-columns: 1fr; margin-bottom: 40px; }
+   .footer-col h4 { font-family: var(--font-display); color: var(--c-gold); font-size: 18px; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 0.05em; }
+   .footer-col a { display: block; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+   .footer-col a:hover { color: var(--c-white); }
+   .footer-col p { font-size: 13px; line-height: 1.5; margin-bottom: 16px; }
+   .footer-col p strong { color: var(--c-white); display: block; margin-bottom: 4px; }
+   
+   .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; }
+   .footer-logo { font-family: var(--font-display); font-size: 24px; font-weight: 800; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+   .footer-logo span { color: var(--c-gold); }
+   .footer-copy { font-size: 12px; }
+   
+   /* ==========================================================================
+      RESPONSIVE — Desktop (≥768px)
+      ========================================================================= */
+   @media (min-width: 768px) {
+     .nav-hamburger { display: none; }
+     .nav-links { display: flex; }
+     .nav-mobile-drawer { display: none !important; }
+   
+     /* Banner VIP alinhado em linha */
+     .banner-vip { flex-direction: row; min-height: 90px; }
+     .banner-vip__text { margin-bottom: 0; text-align: left; }
+     .banner-vip__text span { display: inline; }
+     .btn-vip { margin-top: 0; }
+   
+     /* Hero Grid & Reduced Grid */
+     .hero-reduced { grid-template-columns: 68fr 32fr; align-items: start; }
+     .hero-main-small { min-height: 380px; }
+     .overlay-text h1 { font-size: 36px; }
+   
+     .hero-grid { grid-template-columns: 60fr 40fr; }
+     .hero-main { min-height: 400px; }
+     .side-news .thumb { width: 120px; height: 90px; }
+     .side-news h2 { font-size: 19px; }
+   
+     /* Silos e Sidebar */
+     .content-split { grid-template-columns: 68fr 32fr; }
+     .silo-item { flex-direction: row; align-items: center; }
+     .silo-img { width: 240px; height: 160px; }
+   
+     /* Footer Grid */
+     .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; }
+   }
+   
+   @media (min-width: 1024px) {
+     .overlay-text h1 { font-size: 42px; }
+     .hero-main { min-height: 460px; }
+   }
