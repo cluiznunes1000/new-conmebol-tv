@@ -1,0 +1,25 @@
+bash
+
+cat > /mnt/user-data/outputs/vercel.json << 'EOF'
+{
+  "rewrites": [
+    {
+      "source": "/public/posts/:file",
+      "destination": "/public/posts/:file"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/public/posts/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    }
+  ]
+}
+EOF
+echo "OK"
+Saída
+
+
+
