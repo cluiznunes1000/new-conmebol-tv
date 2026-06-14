@@ -1,16 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/public/posts/:file",
-      "destination": "/public/posts/:file"
-    }
-  ],
-  "headers": [
-    {
       "source": "/public/posts/(.*)",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
-      ]
+      "destination": "/public/posts/$1"
+    },
+    {
+      "source": "/((?!public/).*)",
+      "destination": "/index.html"
     }
   ]
 }
