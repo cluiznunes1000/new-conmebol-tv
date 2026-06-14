@@ -1,3 +1,6 @@
+bash
+
+cat > /mnt/user-data/outputs/index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -62,35 +65,7 @@
   </header>
 
   <!-- ===================================================
-       2. TICKER SLIM — Alerta ao Vivo
-  ==================================================== -->
-  <div class="ticker-wrap" role="complementary" aria-label="Dados ao vivo">
-    <div class="ticker-label">AO VIVO</div>
-    <div class="ticker-track" id="tickerTrack">
-      <span>🔥 Live Odds: <strong>Palmeiras vs Peñarol</strong> — Prob. vitória casa: <strong>72%</strong></span>
-      <span>⚡ Flamengo vs River Plate — Prob. vitória casa: <strong>61%</strong></span>
-      <span>📊 Atlético-MG vs Boca Juniors — Empate: <strong>28%</strong></span>
-      <span>🏆 Semifinal da Libertadores já tem data confirmada</span>
-      <span>🔥 Live Odds: <strong>Palmeiras vs Peñarol</strong> — Prob. vitória casa: <strong>72%</strong></span>
-      <span>⚡ Flamengo vs River Plate — Prob. vitória casa: <strong>61%</strong></span>
-      <span>📊 Atlético-MG vs Boca Juniors — Empate: <strong>28%</strong></span>
-    </div>
-  </div>
-
-  <!-- ===================================================
-       3. BANNER VIP — Super Leaderboard Estreito
-  ==================================================== -->
-  <aside class="banner-vip" role="complementary" aria-label="Grupo VIP">
-    <p class="banner-vip__text">
-      Quer lucrar com estes dados? <span>Junte-se a +8.200 especialistas no <strong>Aposta Invest 2.0</strong></span>
-    </p>
-    <a href="https://facebook.com/groups/sua-comunidade" target="_blank" rel="noopener" class="btn-vip">
-      ENTRAR NO GRUPO VIP
-    </a>
-  </aside>
-
-  <!-- ===================================================
-       4. MAIN — Conteúdo da página (injetado por JS)
+       2. MAIN — Conteúdo da página (injetado por JS)
   ==================================================== -->
   <main id="app" role="main">
     <!-- Renderizado por /src/main.js -->
@@ -128,3 +103,10 @@
   </script>
 </body>
 </html>
+EOF
+echo "OK"
+Saída
+
+OK
+Concluído
+
