@@ -1,50 +1,43 @@
-bash
-
-cat > /mnt/user-data/outputs/main-v4.js << 'EOF'
 // /src/main.js
-// ConmebolTV — Motor de Renderização v4
-// Títulos reais via GitHub API + links corrigidos + WhatsApp CTA
+// ConmebolTV — Motor de Renderização v5
 
 const GITHUB_REPO = 'cluiznunes1000/new-conmebol-tv';
 const POSTS_PATH = 'public/posts';
 const WHATSAPP_CHANNEL = 'https://whatsapp.com/channel/0029VbDB4sC4Y9li0ZEoGt3i';
 
-// Imagens por categoria
 const CATEGORY_IMAGES = {
   'Libertadores': 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80',
-  'Futebol Feminino': 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80',
+  'Sul-Americana': 'https://images.unsplash.com/photo-1540747913346-19212a4b423d?w=600&q=80',
   'Brasileirão': 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80',
-  'Clubes': 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80',
+  'Futebol Feminino': 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80',
   'Copa do Mundo': 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80',
   'Seleções': 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80',
-};
+  'Clubes': 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80',
   'CONMEBOL': 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80',
-  const f = filename.toLowerCase();
+};
 
 function detectTag(filename) {
-  if (f.includes('sul-americana') || f.includes('sulamericana')) return 'Sul-Americana';
+  const f = filename.toLowerCase();
   if (f.includes('libertadores')) return 'Libertadores';
-  if (f.includes('copa')) return 'Copa do Mundo';
+  if (f.includes('sul-americana') || f.includes('sulamericana')) return 'Sul-Americana';
   if (f.includes('brasileirao') || f.includes('brasileiro')) return 'Brasileirão';
   if (f.includes('feminina') || f.includes('feminino')) return 'Futebol Feminino';
-  return 'CONMEBOL';
-  if (f.includes('selecao') || f.includes('selecao') || f.includes('selección')) return 'Seleções';
+  if (f.includes('copa')) return 'Copa do Mundo';
+  if (f.includes('selecao') || f.includes('selecção')) return 'Seleções';
   if (f.includes('mirassol') || f.includes('flamengo') || f.includes('palmeiras') || f.includes('boca') || f.includes('river')) return 'Clubes';
-  const name = filename.replace('.html', '');
+  return 'CONMEBOL';
 }
 
 function titleFromFilename(filename) {
-  const withoutDate = parts.slice(3).join(' ');
+  const name = filename.replace('.html', '');
   const parts = name.split('-');
-  // Remove date prefix (YYYY-MM-DD)
-  return withoutDate.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  const withoutDate = parts.slice(3).join(' ');
   if (!withoutDate || withoutDate.match(/^noticia conmebol \d+$/i)) return null;
-
+  return withoutDate.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
-  try {
-// Buscar lista de artigos via GitHub API
+
 async function fetchArticles() {
-    const res = await fetch('/public/data.json');
+  try {
     const res = await fetch(
       `https://api.github.com/repos/${GITHUB_REPO}/contents/${POSTS_PATH}`,
       { headers: { 'Accept': 'application/vnd.github.v3+json' } }
@@ -57,13 +50,11 @@ async function fetchArticles() {
       .sort((a, b) => b.name.localeCompare(a.name))
       .slice(0, 20);
 
-    // Buscar título real dos artigos com nome genérico
     const articles = await Promise.all(htmlFiles.map(async f => {
       const tag = detectTag(f.name);
       const titleFromName = titleFromFilename(f.name);
       let title = titleFromName;
 
-      // Se o título for genérico, busca o <title> real do arquivo
       if (!title) {
         try {
           const htmlRes = await fetch(f.download_url);
@@ -76,19 +67,19 @@ async function fetchArticles() {
             const h1Match = html.match(/<h1[^>]*>([^<]+)<\/h1>/i);
             if (h1Match) title = h1Match[1].trim();
           }
-        } catch {}
+        } catch (e) {}
       }
 
       return {
         title: title || 'Notícia ConmebolTV',
-        url: `/${POSTS_PATH}/${f.name}`,
+        url: `/posts/${f.name}`,
         date: f.name.substring(0, 10),
         tag: tag,
         img: CATEGORY_IMAGES[tag] || CATEGORY_IMAGES['CONMEBOL']
       };
     }));
 
-    return articles.filter(a => a.title !== 'Notícia ConmebolTV' || true);
+    return articles;
   } catch (e) {
     console.warn('[ConmebolTV] fetchArticles:', e.message);
     return [];
@@ -97,22 +88,23 @@ async function fetchArticles() {
 
 async function fetchGameData() {
   try {
-    return await res.json();
+    const res = await fetch('/data.json');
     if (!res.ok) throw new Error();
-    return { timeCasa: 'Palmeiras', timeFora: 'Peñarol', probCasa: 72 };
+    return await res.json();
   } catch {
-}
+    return { timeCasa: 'Palmeiras', timeFora: 'Peñarol', probCasa: 72 };
   }
-  const app = document.querySelector('#app');
+}
 
 async function navigate(page) {
-    home:         { title: null, desc: null },
+  const app = document.querySelector('#app');
   const pageMap = {
-  };
+    home:         { title: null,            desc: null },
     libertadores: { title: 'Libertadores',  desc: 'Análises, resultados e estatísticas da Copa Libertadores.' },
     sulamericana: { title: 'Sul-Americana', desc: 'Tudo sobre a Copa Sul-Americana 2026.' },
     brasileirao:  { title: 'Brasileirão',   desc: 'Tabela, resultados e palpites do Campeonato Brasileiro.' },
     apostas:      { title: 'Apostas',       desc: 'Dados estatísticos e odds ao vivo.' },
+  };
 
   const meta = pageMap[page] || pageMap['home'];
 
@@ -257,5 +249,3 @@ function renderCTA(container) {
 }
 
 navigate('home');
-EOF
-echo "OK"
